@@ -27,30 +27,6 @@ const projectSliderWrapper = document.querySelector(".slider-wrapp")
 
 ///////////////// ADDEVENTLISTENER
 
-
-
-projectSliderWrapper.addEventListener("click", (e) => {
-    if (!e.target.matches("i")) return
-
-    e.target.classList.contains("left") ? projectsSlider("left") : projectsSlider("right")
-})
-
-
-window.addEventListener("resize",()=>{
-    if (window.innerWidth <= 700) {
-        count=0
-        mainSlider()
-        window.removeEventListener("wheel",windowWheel)
-    } 
-    else{
-        mainSlider()
-        scroolTopWindow()
-        removerActiveBtn(count)
-        window.addEventListener("wheel",windowWheel)
-    }
-})
-
-
 skiilsItmes.forEach((elem) => {
 
     elem.addEventListener("mouseover", (e) => {
@@ -75,18 +51,34 @@ btn.forEach((elem, id) => {
     })
 })
 
-menuClose.addEventListener("click", removerBurgerMenu)
 
 menuItems.forEach((elem,id)=>{
     elem.addEventListener("click",()=>{
-        count=id+1
-
-        mainSlider()
-        removerActiveBtn(id)
-        removerBurgerMenu()
-        
+        if(window.innerWidth>=700){
+            count=id+1
+            resizeWindow()
+            removerActiveBtn(id)
+            removerBurgerMenu()
+        }
+        else {
+            scrollToSectionMob(elem)
+            removerActiveBtn(id)
+            removerBurgerMenu()
+            resizeWindow()
+        }
     })
 })
+
+menuClose.addEventListener("click", removerBurgerMenu)
+
+window.addEventListener("resize",resizeWindow)
+
+projectSliderWrapper.addEventListener("click", (e) => {
+    if (!e.target.matches("i")) return
+
+    e.target.classList.contains("left") ? projectsSlider("left") : projectsSlider("right")
+})
+
 
 ////////FUNCTION
 
@@ -117,6 +109,21 @@ function projectsSlider(direction) {
     }
 
 }
+
+function resizeWindow(){
+    if (window.innerWidth <= 700) {
+        count=0
+        mainSlider()
+        window.removeEventListener("wheel",windowWheel)
+    } 
+    else{
+        mainSlider()
+        scroolTopWindow()
+        removerActiveBtn(count)
+        window.addEventListener("wheel",windowWheel)
+    }
+}
+
 
 function windowWheel(e){
  
@@ -153,6 +160,18 @@ function mainSlider(direction) {
     lastTime = currentTime
 }
 
+function scrollToSectionMob(elem){
+ const item=elem.dataset.href
+ const sectionHeight=document.querySelector(`.${item}`).offsetTop
+
+
+
+ window.scrollTo({
+    top: sectionHeight,
+    behavior: "smooth"
+})
+
+}
 
 
 
