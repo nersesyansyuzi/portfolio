@@ -1,3 +1,29 @@
+const myProjectsArr=[
+    {
+        img:"blog.png",
+        href:"https://nersesyansyuzi.github.io/React-Blog/"
+    },
+    {
+        img:"rest2.png",
+        href:"https://nersesyansyuzi.github.io/React-Restaurant/"
+    
+    },
+    {
+        img:"muv1.png",
+        href:"https://nersesyansyuzi.github.io/React-Movies/"
+    },
+    {
+        img:"cript.png",
+        href:"https://nersesyansyuzi.github.io/CRYPRO-website-JS/"
+    },
+    {
+        img:"yourMeal.png",
+        href:"https://nersesyansyuzi.github.io/YourMeal/"
+    
+    },
+]
+
+
 
 /////BURGERMenu
 const menuBtns = document.querySelectorAll(".menu-button")
@@ -7,21 +33,21 @@ const menuItems=document.querySelectorAll(".menu-item")
 
 
 ////SLIDERMAIN
-const btn = document.querySelectorAll(".slider-menu-item")
-const sliderItems = Array.from(document.querySelector("main").children)
 let count = 0
 let lastTime = 0
 let sliderSpeed = 1000
+const btn = document.querySelectorAll(".slider-menu-item")
+const sliderItems = Array.from(document.querySelector("main").children)
 
 ///SKILS
+const img = document.createElement("img")
 const skilsImgDiv = document.querySelector(".skills-img")
 const skiilsItmes = document.querySelectorAll(".skills-item")
-const img = document.createElement("img")
 
 
 ////PROJECTSSLIDER
 const projectSliderWrapper = document.querySelector(".slider-wrapp")
-
+const sliderContainer=document.querySelector(".slider-container")
 
 
 
@@ -73,6 +99,7 @@ menuClose.addEventListener("click", removerBurgerMenu)
 
 window.addEventListener("resize",resizeWindow)
 
+
 projectSliderWrapper.addEventListener("click", (e) => {
     if (!e.target.matches("i")) return
 
@@ -82,7 +109,27 @@ projectSliderWrapper.addEventListener("click", (e) => {
 
 ////////FUNCTION
 
-burgerMenu()
+function addProject(){
+    myProjectsArr.forEach(({img,href})=>{
+        const projectItemDiv=document.createElement("div")
+        const button=document.createElement("button")
+        const link=document.createElement("a")
+        const imgHtml=document.createElement("img")
+     
+        button.innerText='View Project'
+        imgHtml.src=`img/${img}`
+        link.href=href
+        link.target="_blank"
+        projectItemDiv.classList.add("slider-item")
+
+        link.append(imgHtml)
+        projectItemDiv.append(button,link)
+        sliderContainer.append(projectItemDiv)
+
+    })
+}
+
+
 
 function burgerMenu() {
     menuBtns.forEach((elem) => {
@@ -173,8 +220,6 @@ function scrollToSectionMob(elem){
 
 }
 
-
-
 function scroolTopWindow() {
 
     window.scrollTo({
@@ -187,7 +232,9 @@ function scroolTopWindow() {
 
 
 window.addEventListener('DOMContentLoaded', () => {
-
+    addProject()
+    burgerMenu()
+    
     if (window.innerWidth >= 700){
         window.addEventListener("wheel",windowWheel)
         mainSlider()
