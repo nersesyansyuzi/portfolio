@@ -712,7 +712,7 @@ main .projects-section .container .slider-wrapp .slider-container .slider-item {
     min-width: 100%;
   }
 }
-main .projects-section .container .slider-wrapp .slider-container .slider-item:hover button {
+main .projects-section .container .slider-wrapp .slider-container .slider-item:hover .button {
   z-index: 5;
   top: 45%;
 }
@@ -726,7 +726,8 @@ main .projects-section .container .slider-wrapp .slider-container .slider-item i
   border-radius: 20px;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
-main .projects-section .container .slider-wrapp .slider-container .slider-item button {
+main .projects-section .container .slider-wrapp .slider-container .slider-item .button {
+  text-decoration: none;
   padding: 15px 30px;
   cursor: pointer;
   background: none;
@@ -739,12 +740,12 @@ main .projects-section .container .slider-wrapp .slider-container .slider-item b
   border: 1px solid white;
   transition: color 0.3s ease, background-color 0.3s ease, top 0.3s ease;
 }
-main .projects-section .container .slider-wrapp .slider-container .slider-item button:hover {
+main .projects-section .container .slider-wrapp .slider-container .slider-item .button:hover {
   background-color: var(--color1);
   border-color: var(--color1);
 }
 @media only screen and (max-width: 700px) {
-  main .projects-section .container .slider-wrapp .slider-container .slider-item button {
+  main .projects-section .container .slider-wrapp .slider-container .slider-item .button {
     left: 35%;
   }
 }

@@ -17,7 +17,7 @@ const myProjectsArr=[
         href:"https://nersesyansyuzi.github.io/CRYPRO-website-JS/"
     },
     {
-        img:"yourMeal.png",
+        img:"YourMeal.png",
         href:"https://nersesyansyuzi.github.io/YourMeal/"
     
     },
@@ -112,18 +112,21 @@ projectSliderWrapper.addEventListener("click", (e) => {
 function addProject(){
     myProjectsArr.forEach(({img,href})=>{
         const projectItemDiv=document.createElement("div")
-        const button=document.createElement("button")
+        const buttonLink=document.createElement("a")
         const link=document.createElement("a")
         const imgHtml=document.createElement("img")
      
-        button.innerText='View Project'
+        buttonLink.innerText='View Project'
+        buttonLink.classList.add("button")
+        buttonLink.href=href
+        buttonLink.target="_blank"
         imgHtml.src=`img/${img}`
         link.href=href
         link.target="_blank"
         projectItemDiv.classList.add("slider-item")
 
         link.append(imgHtml)
-        projectItemDiv.append(button,link)
+        projectItemDiv.append(buttonLink,link)
         sliderContainer.append(projectItemDiv)
 
     })

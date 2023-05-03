@@ -837,7 +837,7 @@ main {
 
 
                         &:hover {
-                            button {
+                            .button {
                                 z-index: 5;
                                 top: 45%;
                             }
@@ -856,7 +856,8 @@ main {
                             transition: transform .3s ease, filter .3s ease;
                         }
 
-                        button {
+                        .button {
+                            text-decoration: none;
                             padding: 15px 30px;
                             cursor: pointer;
                             background: none;
