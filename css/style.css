@@ -538,7 +538,7 @@ main .skills-section .container .skills .skills-menu {
   list-style: none;
   display: grid;
   grid-gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(270px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
 }
 main .skills-section .container .skills .skills-menu .skills-item {
   width: 100%;
