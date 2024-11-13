@@ -133,7 +133,6 @@ function addProject(){
 }
 
 
-
 function burgerMenu() {
     menuBtns.forEach((elem) => {
         elem.addEventListener("click", () => {
@@ -176,7 +175,7 @@ function resizeWindow(){
 
 
 function windowWheel(e){
- 
+    
     const direction = e.deltaY
 
     mainSlider(direction)
@@ -190,6 +189,7 @@ function removerActiveBtn(sliderId) {
 }
 
 function mainSlider(direction) {
+
     const currentTime = new Date().getTime()
 
     if (currentTime - lastTime < sliderSpeed) return
